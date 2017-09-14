@@ -1,0 +1,25 @@
+[
+  {
+    "name": "${container_name}",
+    "image": "${repo}:${version}",
+    "portMappings": [
+      {
+        "containerPort": ${container_port},
+        "hostPort": 0
+      }
+    ],
+    "memoryReservation": 128,
+    "dockerLabels": {
+      "app_name": "${app_name}",
+      "env": "${env}"
+    },
+    "logConfiguration": {
+      "logDriver": "json-file",
+      "options": {
+        "max-size": "10m",
+        "max-file": "5",
+        "labels": "com.amazonaws.ecs.cluster,com.amazonaws.ecs.container-name,com.amazonaws.ecs.task-arn,com.amazonaws.ecs.task-definition-family,com.amazonaws.ecs.task-definition-version,app_name,env"
+      }
+    }
+  }
+]
