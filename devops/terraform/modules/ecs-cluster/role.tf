@@ -21,7 +21,7 @@ resource "aws_iam_role" "role" {
 
 resource "aws_iam_instance_profile" "instance-profile" {
   name = "${var.app_name}-${lower(var.environment)}-instance-profile"
-  role = "${aws_iam_role.role.name}"
+  roles = ["${aws_iam_role.role.name}"]
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_for_ec2_role" {
