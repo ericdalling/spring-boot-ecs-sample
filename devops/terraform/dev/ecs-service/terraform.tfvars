@@ -24,7 +24,7 @@ terragrunt = {
 }
 
 #ECS
-desired_count = 5
+desired_count = 1
 deployment_minimum_healthy_percent = 50
 deployment_maximum_percent = 200
 
