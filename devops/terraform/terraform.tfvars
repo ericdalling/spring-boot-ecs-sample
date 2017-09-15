@@ -4,7 +4,7 @@ terragrunt = {
     backend = "dynamodb"
     config {
       aws_region = "us-west-2"
-      state_file_id = "spring-boot-ecs-sample_${path_relative_to_include()}"
+      state_file_id = "spring-boot_${path_relative_to_include()}"
     }
   }
   # Configure Terragrunt to automatically store tfstate files in S3
@@ -12,8 +12,8 @@ terragrunt = {
     backend = "s3"
     config {
       encrypt = "true"
-      bucket = "eric-terraform-remote-state"
-      key = "spring-boot-ecs-sample/${path_relative_to_include()}/terraform.tfstate"
+      bucket = "eric-terraform-remote-state-storage"
+      key = "spring_boot/${path_relative_to_include()}/terraform.tfstate"
       region = "us-west-2"
     }
   }
