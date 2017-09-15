@@ -12,6 +12,7 @@ pipeline {
                     dir('devops/terraform/global/ecr') {
                         sh 'terragrunt --version'
                         sh 'terraform --version'
+                        sh 'terragrunt get --terragrunt-source-update'
                         sh 'terragrunt plan'
                         sh 'terragrunt apply'
 
@@ -56,8 +57,9 @@ pipeline {
         stage('Update ECS Cluster') {
             steps {
                 dir('devops/terraform/dev/ecs-cluster') {
-                    sh 'terragrunt plan -var docker_image_version=$version'
-                    sh 'terragrunt apply -var docker_image_version=$version'
+                    sh 'terragrunt get --terragrunt-source-update'
+                    sh 'terragrunt plan'
+                    sh 'terragrunt apply'
                 }
             }
         }
@@ -65,16 +67,11 @@ pipeline {
         stage('Update ECS Service') {
             steps {
                 dir('devops/terraform/dev/ecs-service') {
+                    sh 'terragrunt get --terragrunt-source-update'
                     sh 'terragrunt plan -var docker_image_version=$version'
                     sh 'terragrunt apply -var docker_image_version=$version'
                 }
             }
-        }
-    }
-
-    post {
-        always {
-            step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'dalling.eric@gmail.com', sendToIndividuals: false])
         }
     }
 }
