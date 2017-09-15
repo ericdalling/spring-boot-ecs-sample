@@ -9,11 +9,6 @@ pipeline {
         stage('Setup ECR') {
             steps {
                 script {
-                    def terraform = tool name: 'Terraform 0.8.7', type: 'org.jenkinsci.plugins.terraform.TerraformInstallation'
-                    def terragrunt = tool name: 'Terragrunt 0.11.0', type: 'org.jenkinsci.plugins.terraform.TerraformInstallation'
-
-                    env.PATH = "$terraform:$terragrunt:${env.PATH}"
-
                     dir('devops/terraform/global/ecr') {
                         sh 'terragrunt plan'
                         sh 'terragrunt apply'

@@ -24,7 +24,7 @@ resource "aws_ecs_task_definition" "ecs_task" {
 }
 
 data "aws_iam_role" "ecs_service_iam_role" {
-  role_name = "${var.ecs_service_iam_role}"
+  name = "${var.ecs_service_iam_role}"
 }
 
 resource "aws_ecs_service" "ecs_service" {

@@ -17,7 +17,6 @@ variable "alb_health_check_protocol" {default = "HTTP"}
 variable "alb_health_check_port" {default = "traffic-port"}
 variable "alb_health_check_path" {default = "/"}
 variable "alb_health_check_interval" {default = 30}
-variable "alb_health_check_interval" {default = 30}
 variable "alb_healthy_threshold" {default = 5}
 variable "alb_unhealthy_threshold" {default = 2}
 variable "docker_ephemeral_from_port" {default = 32768}
