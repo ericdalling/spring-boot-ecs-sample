@@ -7,3 +7,5 @@ remote_state_s3_bucket = "eric-terraform-remote-state-storage"
 remote_ecr_s3_key = "spring-boot-ecs-sample/global/ecr/terraform.tfstate"
 
 ecr_repository_name = "spring-boot-ecs-sample"
+
+ecs_service_iam_role = "arn:aws:iam::589147405124:role/ecsServiceRole"

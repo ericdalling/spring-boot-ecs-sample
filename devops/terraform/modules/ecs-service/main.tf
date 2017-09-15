@@ -23,10 +23,6 @@ resource "aws_ecs_task_definition" "ecs_task" {
   task_role_arn = "${aws_iam_role.role.arn}"
 }
 
-data "aws_iam_role" "ecs_service_iam_role" {
-  name = "${var.ecs_service_iam_role}"
-}
-
 resource "aws_ecs_service" "ecs_service" {
   name =  "${var.app_name}-${var.environment}"
   task_definition = "${aws_ecs_task_definition.ecs_task.arn}"
@@ -35,7 +31,7 @@ resource "aws_ecs_service" "ecs_service" {
   deployment_minimum_healthy_percent = "${var.deployment_minimum_healthy_percent}"
   deployment_maximum_percent = "${var.deployment_maximum_percent}"
 
-  iam_role = "${data.aws_iam_role.ecs_service_iam_role.id}"
+  iam_role = "${var.ecs_service_iam_role}"
   load_balancer {
     target_group_arn = "${aws_alb_target_group.alb_target_group.arn}"
     container_name = "${var.container_name}"
