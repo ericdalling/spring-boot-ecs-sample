@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 data "template_file" "task-definitions" {
-  template = "${file("task-definitions/ecs-sample.json")}"
+  template = "${file("task-definitions/sample.json")}"
 
   vars {
     region = "${var.aws_region}"
