@@ -10,6 +10,8 @@ pipeline {
             steps {
                 script {
                     dir('devops/terraform/global/ecr') {
+                        sh 'terragrunt --version'
+                        sh 'terraform --version'
                         sh 'terragrunt plan'
                         sh 'terragrunt apply'
 
