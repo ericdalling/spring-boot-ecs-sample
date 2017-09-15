@@ -22,7 +22,7 @@ variable "alb_unhealthy_threshold" {default = 2}
 variable "docker_ephemeral_from_port" {default = 32768}
 variable "docker_ephemeral_to_port" {default = 65535}
 variable "alb_internal" {default = true}
-variable "deregistration_delay" {default = 300}
+variable "deregistration_delay" {default = 0}
 variable "matcher" {default = "200"}
 
 #ECS
