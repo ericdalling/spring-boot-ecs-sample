@@ -14,7 +14,7 @@ variable "health_check_grace_period" {default = 300}
 variable "private_key_path" {default = "~/.ssh/ecs-sample.pem"}
 variable "key_name" {default = "ecs-sample"}
 variable "asg_terminate_hook_enabled" {default = true}
-variable "vpc_id" {default = "vpc-dd71e9bb"}
+variable "vpc_id" {}
 variable "instance_type" {default = "t2.micro"}
 variable "pause_time" {default = "PT0S"}
 variable "wait_on_resource_signals" {default = false}
